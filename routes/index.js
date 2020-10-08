@@ -22,4 +22,7 @@ router.post('/email/:email_id/edit', landing.edit_email)
 /* Delete an email entry */
 router.post('/email/:email_id/delete', landing.delete_email)
 
+/*  */
+router.post('/email/:email_id/delete-json', landing.delete_email_json)
+
 module.exports = router;

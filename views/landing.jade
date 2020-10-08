@@ -10,7 +10,11 @@ block content
   if emails
     h1 Emails
     for email in emails
-      p
+      p(id=email.id)
         span #{email.email}
         |  
         a(href="/email/" + email.id) Details
+        |  
+        button(onclick=`deleteLead('${email.id}')`) Delete
+  script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+  script(src='/javascripts/emails.js')

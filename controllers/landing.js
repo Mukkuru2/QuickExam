@@ -60,3 +60,13 @@ exports.delete_email = function (req, res, next) {
         res.redirect('/emails');
     })
 }
+
+exports.delete_email_json = function (req, res, next) {
+    return models.TestTable.destroy({
+        where: {
+            id: req.params.email_id
+        }
+    }).then(result => {
+        res.send({ msg: "Success" });
+    })
+}
