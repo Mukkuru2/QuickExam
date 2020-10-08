@@ -1,0 +1,7 @@
+extends ../layout
+
+block content
+
+  form(action="/email/" + email.id + "/edit", method="POST")
+    input(name="email_submitted", type="email", placeholder="Enter your email adress", value=email.email)
+    button(type="submit") Save

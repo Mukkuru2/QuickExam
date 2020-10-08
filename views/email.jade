@@ -2,4 +2,7 @@ extends layout
 
 block content
   h1 Email
-  p #{email.email}
+  p 
+    span #{email.email}
+    |  
+    a(href="/email/" + email.id + "/edit") Edit
