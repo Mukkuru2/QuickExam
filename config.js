@@ -5,7 +5,8 @@ module.exports = {
         "database": "test",
         "host": "127.0.0.1",
         "dialect": "mysql",
-        "port": 3306
+        "port": 3306,
+        "logQueryParameters" : true
     },
     "test": {
         "username": "root",
