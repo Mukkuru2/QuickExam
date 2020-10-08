@@ -15,9 +15,11 @@ router.get('/emails', landing.show_emails)
 /* GET individual email */
 router.get('/email/:email_id', landing.show_email)
 
-/* GET edit and post an email */
+/* GET edit and update an email */
 router.get('/email/:email_id/edit', landing.show_edit_email)
 router.post('/email/:email_id/edit', landing.edit_email)
 
+/* Delete an email entry */
+router.post('/email/:email_id/delete', landing.delete_email)
 
 module.exports = router;

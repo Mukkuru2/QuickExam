@@ -40,7 +40,6 @@ exports.show_edit_email = function (req, res, next) {
 }
 
 exports.edit_email = function (req, res, next) {
-    console.log(req.body.email, req.params.email_id);
     return models.TestTable.update({
         email: req.body.email_submitted
     }, {
@@ -49,5 +48,15 @@ exports.edit_email = function (req, res, next) {
         }
     }).then(result => {
         res.redirect('/email/' + req.params.email_id);
+    })
+}
+
+exports.delete_email = function (req, res, next) {
+    return models.TestTable.destroy({
+        where: {
+            id: req.params.email_id
+        }
+    }).then(result => {
+        res.redirect('/emails');
     })
 }
