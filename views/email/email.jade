@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+    include ../common/head.jade
+    +head("Emails")
+    body
+        header
+            include ../common/navbar.jade
+            +navbar()
+            .container
+                .row.align-items-center
+                    .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
+                    h1 Emails
+                    table.table
+                        thead
+                            tr
+                                th(scope="col") Email
+                                th(scope="col") Edit Email
+                                th(scope="col")
+                            tr
+                        tbody
+                            tr(id=email.id)
+                                td
+                                    span #{email.email}
+                                td
+                                    a(href="/email" + email.id + "/edit") Edit
+                                td
+                                    button(onclick=`deleteEmail('${email.id}')`).btn.btn-primary Delete

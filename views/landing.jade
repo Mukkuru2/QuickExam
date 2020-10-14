@@ -5,7 +5,7 @@ html(lang='en')
   body
     header
       include common/navbar.jade
-      +navbar
+      +navbar()
       .container
         .row.align-items-center
           .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
@@ -17,27 +17,6 @@ html(lang='en')
                 input(name="email_submitted", type="email", placeholder="Enter your email address").form-control
                 .input-group-append
                   button(type="submit").btn.btn-primary Get Started
-
-        .row
-          .col-md-6
-            if emails
-              h1 Leads
-              table.table
-                thead
-                  tr
-                    th(scope="col") Email
-                    th(scope="col") Actions
-                    th(scope="col")
-                  tr
-                tbody
-                  for email in emails
-                    tr(id=email.id)
-                      td
-                        span #{email.email}
-                      td
-                        a(href="/email" + email.id) Details
-                      td
-                        button(onclick=`deleteLead('${email.id}')`).btn.btn-primary Delete
 
 
     include common/footer.jade

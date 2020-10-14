@@ -15,7 +15,7 @@ exports.submit_email = function (req, res, next) {
 
 exports.show_emails = function (req, res, next) {
     return models.TestTable.findAll().then(emails => {
-        res.render('landing', { title: 'Email test!', emails: emails });
+        res.render('email/emails', { title: 'Email test!', emails: emails });
     })
 }
 
@@ -25,7 +25,7 @@ exports.show_email = function (req, res, next) {
             id: req.params.email_id
         }
     }).then(email => {
-        res.render('email', { email: email });
+        res.render('email/email', { email: email });
     })
 }
 
@@ -47,7 +47,7 @@ exports.edit_email = function (req, res, next) {
             id: req.params.email_id
         }
     }).then(result => {
-        res.redirect('/email/' + req.params.email_id);
+        res.redirect('email/email/' + req.params.email_id);
     })
 }
 
@@ -57,7 +57,7 @@ exports.delete_email = function (req, res, next) {
             id: req.params.email_id
         }
     }).then(result => {
-        res.redirect('/emails');
+        res.redirect('/email/emails');
     })
 }
 
