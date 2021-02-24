@@ -16,7 +16,7 @@ exports.show_create_exam = function (req, res, next) {
 exports.create_exam = function (req, res, next) {
     return models.Exam.create({
         name: req.body[0],
-        code: 'NJSDFNJH'
+        code: makeid(6)
     }).then(exam => {
         for (i = 1;
              i < req.body.length;
@@ -36,4 +36,14 @@ function getRandomQuestions(questions, n = 10) {
 
     // Get sub-array of first 10 elements after shuffled
     return shuffledQuestions.slice(0, n);
+}
+
+function makeid(length) {
+    let result           = '';
+    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let charactersLength = characters.length;
+    for (let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
 }
