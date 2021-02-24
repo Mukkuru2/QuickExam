@@ -18,6 +18,14 @@ module.exports = {
             Question_questionId: {
                 allowNull: false,
                 type: Sequelize.STRING
+            },
+            answer_order: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
+            question_number: {
+                allowNull: false,
+                type: Sequelize.INTEGER
             }
         })
     },
