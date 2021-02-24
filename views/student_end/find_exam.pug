@@ -1,23 +1,22 @@
 doctype html
 html(lang='en')
-  include common/head
+  include ../common/head
   +head("Some Testing")
   body
     header
-      include common/navbar
+      include ../common/navbar
       +navbar(user)
       .container
         .row.align-items-center
           .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
             h1.mb-3 Title
-            p Some text appears here. I can write a short thing or two to demonstrate that.
-            p.mb-4 AAAAAAAAAAAAAAAAAAAAa this is more text! Lorem ipsum dolor sit amet, ik weet de rest niet uit mijn hoofd.
             form(action="/start_exam", method="POST")
               .input-group.mb-3
-                input(name="email_submitted", type="email", placeholder="Enter the code for the quiz you'd like to attempt!").form-control
+                input(name="exam_code", type="text", placeholder="Enter the code for the quiz you'd like to attempt!"
+                style={height: '80px'}).form-control
                 .input-group-append
                   button(type="submit").btn.btn-primary Get Started
 
 
-    include common/footer
+    include ../common/footer
     +footer()

@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  include ../common/head
+  +head("Some Testing")
+  body
+    header
+      include ../common/navbar
+      +navbar(user)
+      .container
+        .row.align-items-center
+          .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
+            h1.mb-3 Exam!
+            for question in questions
+              tr(id=question.id)
+                td
+                  p #{question.question}
+                td
+                  a(href="/question/" + question.id) Details
+                td
+                  a(href="#", onclick=`deleteQuestion('${question.id}')`) Delete
+
+
+    include ../common/footer
+    +footer()

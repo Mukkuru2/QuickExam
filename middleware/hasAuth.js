@@ -13,3 +13,8 @@ exports.hasAuth = function(req, res, next){
     else
         next(createError(404, "Page does not exist."));
 }
+
+exports.userView = function(req, res, next) {
+    res.locals.user = req.user;
+    next();
+}
