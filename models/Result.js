@@ -1,18 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var TestTable = sequelize.define('TestTable', {
+    var Result = sequelize.define('Result', {
         id: {
+            allowNull: false,
+            primaryKey: true,
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
-
-            allowNull: false,
-            primaryKey: true
         },
-        email: {
-            type: DataTypes.STRING,
+        result: {
             allowNull: false,
-        },
+            type: DataTypes.JSON
+        }
     });
 
-    return TestTable;
+    return Result;
 };

@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+  include ../common/head
+  +head("Emails")
+  body
+    header
+      include ../common/navbar
+      +navbar(user)
+
+      style(type="text/css").
+        p {
+          white-space: pre-line
+        }
+
+      .container
+        .row.align-items-center
+          .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
+          h1 Questions
+          table.table
+            thead
+              tr
+                th(scope="col") Question
+                th(scope="col") Edit
+                th(scope="col")
+                
+              tr
+            tbody
+              for question in questions
+                tr(id=question.id)
+                  td
+                    p #{question.question}
+                  td
+                    a(href="/question/" + question.id) Details
+                  td
+                    a(href="#", onclick=`deleteQuestion('${question.id}')`) Delete
+
+  include ../common/footer
+  +footer()
+
+  script(src='/javascripts/questions.js')

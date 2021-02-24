@@ -1,11 +1,11 @@
 doctype html
 html(lang='en')
-  include common/head.jade
+  include common/head
   +head("Some Testing")
   body
     header
-      include common/navbar.jade
-      +navbar()
+      include common/navbar
+      +navbar(user)
       .container
         .row.align-items-center
           .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
@@ -19,7 +19,5 @@ html(lang='en')
                   button(type="submit").btn.btn-primary Get Started
 
 
-    include common/footer.jade
+    include common/footer
     +footer()
-
-    script(src='/javascripts/emails.js')

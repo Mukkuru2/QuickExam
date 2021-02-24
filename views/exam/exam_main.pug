@@ -1,11 +1,11 @@
 doctype html
 html(lang='en')
-    include ../common/head.jade
+    include ../common/head
     +head("Emails")
     body
         header
-            include ../common/navbar.jade
-            +navbar()
+            include ../common/navbar
+            +navbar(user)
             .container
                 .row.align-items-center
                     .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
@@ -17,11 +17,14 @@ html(lang='en')
                                 th(scope="col") Edit Email
                                 th(scope="col")
                             tr
-                        tbody
-                            tr(id=email.id)
-                                td
-                                    span #{email.email}
-                                td
-                                    a(href="/email" + email.id + "/edit") Edit
-                                td
-                                    button(onclick=`deleteEmail('${email.id}')`).btn.btn-primary Delete
+                        - var n = 0;
+                        while n < 10
+                            tbody
+                                tr(id="q" + n++)
+                                    td
+                                        span Yes
+                                    td
+                                        span Edit
+                                    td
+                                        span Delete
+n

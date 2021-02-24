@@ -1,0 +1,39 @@
+doctype html
+html(lang='en')
+  include ../common/head
+  +head("Question")
+  body
+    header
+      include ../common/navbar
+      +navbar(user)
+      .container
+        .row.align-items-center
+          .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
+          h1 Question
+          table.table
+            thead.text-nowrap
+              tr
+                th(scope="col") Question
+                th(scope="col") Correct Answer
+                th(scope="col") Wrong Answers
+                th(scope="col") Edit question
+                th(scope="col") Delete question
+              tr
+            tbody
+              tr(id="pain")
+                td
+                  span #{question.question}
+                td
+                  span #{question.correctanswer}
+                td
+                  ul.list-group.list-group-flush
+                    for answer in question.wronganswers
+                      li.list-group-item #{answer}
+                td
+                  a(href="/question/" + question.id + "/edit").btn.btn-primary Edit
+                //TODO: remove ajax and make normal referral
+                td
+                  button(onclick=`deleteQuestion('${question.id}')`).btn.btn-primary Delete
+      include ../common/footer
+      +footer()
+      script(src='/javascripts/questions.js')

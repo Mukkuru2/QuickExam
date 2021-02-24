@@ -1,0 +1,52 @@
+doctype html
+html(lang='en')
+  include ../common/head
+  +head("Add Question")
+  body
+    header
+      include ../common/navbar
+      +navbar(user)
+      .container
+        .row.align-items-center
+          .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
+            h1 Add question
+
+            - var nSelAns = 1;
+            select(name="numAnswers", id="numAnswers", onchange=`updateAmountOfWrongAnswers(this)`)
+              option Select
+              while nSelAns <= 9
+                option #{nSelAns++}
+
+            table.table
+              form(action="javascript: submitQuestion()")
+                .input-group.mb-3
+
+                  tbody
+                    tr.row
+                      .form-group
+                        label Question
+                        textarea(name="question", id="question", placeholder="Enter the question here", rows = "5").form-control
+                    tr.row
+                      .form-group
+                        label Thema
+                        input(name="thema", id="thema", type="text", placeholder="Enter het thema here", value = "Voortplanting").form-control
+                    tr.row
+                      .form-group
+                        label Correcte antwoord
+                        input(name="correctanswer", id="correctanswer", type="text", placeholder="Correct answer").form-control
+
+
+                    -var n = 0;
+                    if numAns != null
+                      while n < numAns
+                        tr.row
+                          .form-group
+                            input(name="wronganswer" + n, id="wronganswer" + n++, type="text", placeholder="Wrong answer " + n).form-control
+                    else
+                      tr.row
+                        .form-group
+                          input(name="wronganswer0", id="wronganswer0", type="text", placeholder="Wrong answer1").form-control
+                    button(type="submit").btn.btn-primary Save
+    include ../common/footer
+    +footer()
+    script(src='/javascripts/answers.js')

@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  include ../common/head
+  +head("Add Question")
+  body
+    header
+      include ../common/navbar
+      +navbar(user)
+      .container
+        .row.align-items-center
+          .col-md-9.order-md-1.text-center.text-md-left.pr-md-5
+            h1 Edit question
+
+            table.table
+              form(action="/question/"+question.id+"/edit", method="POST")
+                .input-group.mb-3
+
+                  tbody
+                    tr.row
+                      .form-group
+                        label Question
+                        textarea(name="question", id="question", rows = "5").form-control #{question.question}
+                    tr.row
+                      .form-group
+                        label Thema
+                        input(name="thema", id="thema", type="text", value=question.thema).form-control
+                    tr.row
+                      .form-group
+                        label Correcte antwoord
+                        input(name="correctanswer", id="correctanswer", type="text", value=question.correctanswer).form-control
+
+                    for answer, index in question.wronganswers
+                      tr.row
+                        .form-group
+                          input(name="wronganswer" + index, id="wronganswer" + index, type="text", value=answer).form-control
+                    else
+                      tr.row
+                        .form-group
+                          input(name="wronganswer0", id="wronganswer0", type="text", placeholder="Wrong answer1").form-control
+                    button(type="submit").btn.btn-primary Save
+    include ../common/footer
+    +footer()
+    script(src='/javascripts/answers.js')
